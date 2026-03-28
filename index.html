@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ariana Jackson | MPH Candidate</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf8f5;
+    --warm-white: #f5f2ed;
+    --stone: #e8e3db;
+    --taupe: #c4b9a8;
+    --muted: #9a8f82;
+    --text: #2c2825;
+    --text-light: #6b6158;
+    --accent: #7a6e5f;
+    --accent-warm: #a89880;
+    --line: #ddd8d0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 4rem;
+    background: rgba(250, 248, 245, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  #home {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 4rem;
+    position: relative;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 15%; bottom: 15%;
+    width: 1px;
+    background: var(--line);
+  }
+
+  .hero-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-weight: 300;
+    max-width: 380px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: var(--text);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--accent); }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border: 1px solid var(--taupe);
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--text); color: var(--text); }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem;
+    background: var(--warm-white);
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .stat-item {}
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .hero-focus {
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .focus-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .focus-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .focus-tag {
+    padding: 0.35rem 0.9rem;
+    border: 1px solid var(--taupe);
+    font-size: 0.78rem;
+    color: var(--text-light);
+    border-radius: 0;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 7rem 4rem;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .section-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  /* ABOUT */
+  #about {
+    background: var(--warm-white);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-sidebar {}
+
+  .education-item {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .education-item:last-child { border-bottom: none; }
+
+  .edu-school {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .edu-degree {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 0.25rem;
+  }
+
+  .edu-date {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .edu-gpa {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.2rem 0.6rem;
+    background: var(--stone);
+    font-size: 0.72rem;
+    color: var(--text-light);
+    letter-spacing: 0.05em;
+  }
+
+  .about-body p {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    font-weight: 300;
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-body p:last-child { margin-bottom: 0; }
+
+  .about-body strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* RESEARCH */
+  #research {
+    background: var(--cream);
+  }
+
+  .research-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .research-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.2s;
+  }
+
+  .research-item:first-child { border-top: 1px solid var(--line); }
+
+  .research-meta {}
+
+  .research-date {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .research-location {
+    font-size: 0.82rem;
+    color: var(--text-light);
+  }
+
+  .research-content {}
+
+  .research-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  .research-org {
+    font-size: 0.82rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+
+  .research-desc {
+    font-size: 0.92rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* EXPERIENCE */
+  #experience {
+    background: var(--warm-white);
+  }
+
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .exp-item:first-child { border-top: 1px solid var(--line); }
+
+  .exp-meta {}
+
+  .exp-date {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-location {
+    font-size: 0.82rem;
+    color: var(--text-light);
+  }
+
+  .exp-content {}
+
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  .exp-org {
+    font-size: 0.82rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+
+  .exp-desc {
+    font-size: 0.92rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--text);
+    color: var(--cream);
+  }
+
+  #contact .section-title { color: var(--cream); }
+  #contact .section-num { color: var(--taupe); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--stone);
+    margin-bottom: 2rem;
+  }
+
+  .contact-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+  }
+
+  .contact-row {
+    display: flex;
+    gap: 1.5rem;
+    align-items: baseline;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .contact-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  .contact-value {
+    font-size: 0.92rem;
+    color: var(--stone);
+  }
+
+  .contact-right {
+    padding-top: 0.5rem;
+  }
+
+  .contact-note {
+    font-size: 0.92rem;
+    color: var(--taupe);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .skill-group {}
+
+  .skill-group-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-group-items {
+    font-size: 0.85rem;
+    color: var(--stone);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--text);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    color: var(--taupe);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-note {
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag { animation: fadeUp 0.6s ease forwards; }
+  .hero-name { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-subtitle { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-cta { animation: fadeUp 0.6s 0.3s ease both; }
+  .hero-stats { animation: fadeUp 0.6s 0.15s ease both; }
+  .hero-focus { animation: fadeUp 0.6s 0.3s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-name">Ariana Jackson</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-left">
+    <p class="hero-tag">MPH Candidate · Columbia University</p>
+    <h1 class="hero-name">Ariana<br><em>Jackson</em></h1>
+    <p class="hero-subtitle">Public health researcher specializing in sexual & reproductive health, global health equity, and maternal health systems.</p>
+    <div class="hero-cta">
+      <a href="#research" class="btn-primary">View Research</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">3.94</div>
+        <div class="stat-label">Undergraduate GPA<br>Summa Cum Laude</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Research &<br>Professional Roles</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Countries of<br>Research Focus</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">B1</div>
+        <div class="stat-label">French Language<br>Proficiency</div>
+      </div>
+    </div>
+    <div class="hero-focus">
+      <p class="focus-label">Areas of Focus</p>
+      <div class="focus-tags">
+        <span class="focus-tag">Reproductive Health</span>
+        <span class="focus-tag">Global Health Equity</span>
+        <span class="focus-tag">Maternal Health</span>
+        <span class="focus-tag">Health Disparities</span>
+        <span class="focus-tag">Qualitative Methods</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">About Me</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-sidebar">
+        <div class="education-item">
+          <div class="edu-school">Columbia University</div>
+          <div class="edu-degree">Master of Public Health<br>Sociomedical Sciences — Sexuality, Sexual & Reproductive Health</div>
+          <div class="edu-date">2024 – 2026</div>
+        </div>
+        <div class="education-item">
+          <div class="edu-school">Arizona State University</div>
+          <div class="edu-degree">B.A. Global Health<br>Minor in Biological Sciences</div>
+          <div class="edu-date">2022 – 2023</div>
+          <div><span class="edu-gpa">GPA 3.94 · Summa Cum Laude</span></div>
+        </div>
+      </div>
+      <div class="about-body">
+        <p>I am a Master of Public Health candidate at <strong>Columbia University</strong>, concentrating in Sociomedical Sciences with a focus on Sexuality, Sexual, and Reproductive Health. My work sits at the intersection of global health equity, maternal and child health, and community-centered research.</p>
+        <p>With a background in both <strong>qualitative and quantitative methods</strong>, I have contributed to research spanning ethnic health disparities in Sub-Saharan Africa, neonatal fatality prevention, and trainee preparedness for global health work in conflict settings. I am equally committed to translating research into action — whether through donor communications, stakeholder engagement, or community outreach.</p>
+        <p>I graduated <strong>Summa Cum Laude</strong> from Arizona State University with a B.A. in Global Health and a Minor in Biological Sciences, and bring B1-level French proficiency alongside experience studying abroad in Paris.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Research</h2>
+    </div>
+    <div class="research-list">
+
+      <div class="research-item">
+        <div class="research-meta">
+          <div class="research-date">May – Sep 2025</div>
+          <div class="research-location">New York, NY</div>
+        </div>
+        <div class="research-content">
+          <div class="research-role">Student Researcher</div>
+          <div class="research-org">Columbia University — Global Health Experience Survey (GHES)</div>
+          <div class="research-desc">The GHES examines trainee preparedness for global health work in conflict-affected settings, assessing cultural, socioeconomic, linguistic, and political readiness. Led a multi-institutional participant recruitment strategy, analyzed pre/post survey data, and contributed findings to a written abstract used to improve global health training curricula.</div>
+        </div>
+      </div>
+
+      <div class="research-item">
+        <div class="research-meta">
+          <div class="research-date">Jan – Dec 2023</div>
+          <div class="research-location">Tempe, AZ</div>
+        </div>
+        <div class="research-content">
+          <div class="research-role">Research Lab Member</div>
+          <div class="research-org">Inclusive Human Learning Lab, ASU · PI: Dr. Daniel Hruschka</div>
+          <div class="research-desc">Conducted precision mapping of ethnic health disparities to examine how social conditions shape health outcomes. Researched and coded forms of oppression and discrimination among ethnic groups in Zambia, and co-authored write-ups documenting disparities for broader research dissemination.</div>
+        </div>
+      </div>
+
+      <div class="research-item">
+        <div class="research-meta">
+          <div class="research-date">Aug – Dec 2022</div>
+          <div class="research-location">Tempe, AZ</div>
+        </div>
+        <div class="research-content">
+          <div class="research-role">Research Lab Intern</div>
+          <div class="research-org">Culture, Health & Environment Research Lab, ASU · PIs: Dr. Alissa Ruth & Dr. Alexandra Brewis</div>
+          <div class="research-desc">Performed qualitative data entry and quality management for multiple academic projects using SPSS, including the Global Ethnohydrology Study. Transcribed Spanish-language interviews on disaster relief and social capital in post-Hurricane Maria Puerto Rico. Later recruited and interviewed participants for a study on the impact of school choice on neighborhoods.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Experience</h2>
+    </div>
+    <div class="experience-list">
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-date">Dec 2024 – Present</div>
+          <div class="exp-location">New York, NY</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Outreach & Communications Coordinator</div>
+          <div class="exp-org">FLIGHT — Foundation for the Localization and Innovation of Global Health Technologies</div>
+          <div class="exp-desc">FLIGHT is a maternal health systems-strengthening initiative focused on reducing maternal sepsis in Freetown, Sierra Leone. Leads communications and donor engagement efforts, translating program data into quarterly newsletters, reports, digital content, and stakeholder briefs while managing donor relations and resource mobilization materials using REDCap-based data systems.</div>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-date">Aug 2023 – Jul 2024</div>
+          <div class="exp-location">Scottsdale, AZ</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Program Assistant</div>
+          <div class="exp-org">American Academy of Pediatrics — Arizona Chapter (AZAAP)</div>
+          <div class="exp-desc">Supported the Injury and Fatality Prevention and Poverty and Child Health programs. Reviewed and processed neonatal fatality cases in Maricopa County, synthesized data to classify deaths and identify patterns of preventability, and participated in weekly case review meetings with pediatricians and public health officials to assess and recommend prevention strategies.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <p class="contact-intro">Open to research collaborations, fellowship opportunities, and academic conversations.</p>
+        <div class="contact-detail">
+          <div class="contact-row">
+            <span class="contact-label">Location</span>
+            <span class="contact-value">New York City, New York</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Phone</span>
+            <span class="contact-value">(480) 454-9885</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Program</span>
+            <span class="contact-value">MPH · Columbia University · 2026</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-right">
+        <p class="contact-note">Proficient in a range of research tools and statistical software. CITI certified and experienced across qualitative and quantitative methodologies.</p>
+        <div class="skills-grid">
+          <div class="skill-group">
+            <div class="skill-group-label">Research Tools</div>
+            <div class="skill-group-items">NVivo · REDCap<br>SPSS · MAXQDA · SAS</div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-label">Methods</div>
+            <div class="skill-group-items">Qualitative Analysis<br>Survey Design · Data QC</div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-label">Languages</div>
+            <div class="skill-group-items">English (Native)<br>French (B1)</div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-label">Certifications</div>
+            <div class="skill-group-items">CITI Program<br>Certified</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Ariana Jackson · MPH Candidate</span>
+  <span class="footer-note">Columbia University · Sociomedical Sciences · 2026</span>
+</footer>
+
+</body>
+</html>
