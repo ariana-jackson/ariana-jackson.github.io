@@ -268,6 +268,42 @@
 
   .about-sidebar {}
 
+  .photo-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--stone);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    border: 1px dashed var(--taupe);
+    overflow: hidden;
+  }
+
+  .photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+
+  .photo-placeholder-text {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  .photo-placeholder-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.4;
+  }
+
   .education-item {
     margin-bottom: 2rem;
     padding-bottom: 2rem;
@@ -569,6 +605,114 @@
   .hero-cta { animation: fadeUp 0.6s 0.3s ease both; }
   .hero-stats { animation: fadeUp 0.6s 0.15s ease both; }
   .hero-focus { animation: fadeUp 0.6s 0.3s ease both; }
+
+  /* WRITING */
+  .writing-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .writing-tab {
+    padding: 0.75rem 1.75rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    border: none;
+    background: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .writing-tab:hover { color: var(--text); }
+
+  .writing-tab.active {
+    color: var(--text);
+    border-bottom-color: var(--text);
+  }
+
+  .writing-panel { display: none; }
+  .writing-panel.active { display: block; }
+
+  .writing-piece {
+    max-width: 780px;
+  }
+
+  .writing-category {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .writing-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .writing-context {
+    font-size: 0.82rem;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .writing-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--taupe);
+    margin-bottom: 2rem;
+  }
+
+  .writing-body {
+    font-size: 0.97rem;
+    color: var(--text-light);
+    line-height: 2;
+    font-weight: 300;
+  }
+
+  .writing-body p {
+    margin-bottom: 1.5rem;
+  }
+
+  .writing-body p:last-child { margin-bottom: 0; }
+
+  .writing-refs {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .writing-refs-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .writing-refs ol {
+    padding-left: 1.2rem;
+  }
+
+  .writing-refs li {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+  }
+
 </style>
 </head>
 <body>
@@ -580,6 +724,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#research">Research</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#writing">Writing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -587,7 +732,7 @@
 <!-- HERO -->
 <section id="home">
   <div class="hero-left">
-    <p class="hero-tag">MPH Candidate · Columbia University</p>
+    <p class="hero-tag">MPH Candidate · Graduating May 2026 · Columbia University</p>
     <h1 class="hero-name">Ariana<br><em>Jackson</em></h1>
     <p class="hero-subtitle">Public health researcher specializing in sexual & reproductive health, global health equity, and maternal health systems.</p>
     <div class="hero-cta">
@@ -636,10 +781,16 @@
     </div>
     <div class="about-grid">
       <div class="about-sidebar">
+        <div class="photo-placeholder" id="profile-photo">
+          <!-- To add your photo later, replace this div's contents with: <img src="your-photo.jpg" alt="Ariana Jackson"> -->
+          <div class="photo-placeholder-icon">🎓</div>
+          <div class="photo-placeholder-text">Grad photo<br>coming soon</div>
+        </div>
         <div class="education-item">
           <div class="edu-school">Columbia University</div>
-          <div class="edu-degree">Master of Public Health<br>Sociomedical Sciences — Sexuality, Sexual & Reproductive Health</div>
-          <div class="edu-date">2024 – 2026</div>
+          <div class="edu-degree">Master of Public Health<br>Sociomedical Sciences: Sexuality, Sexual & Reproductive Health</div>
+          <div class="edu-date">2024 – Graduating May 2026</div>
+          <div><span class="edu-gpa">GPA 3.9</span></div>
         </div>
         <div class="education-item">
           <div class="edu-school">Arizona State University</div>
@@ -650,7 +801,7 @@
       </div>
       <div class="about-body">
         <p>I am a Master of Public Health candidate at <strong>Columbia University</strong>, concentrating in Sociomedical Sciences with a focus on Sexuality, Sexual, and Reproductive Health. My work sits at the intersection of global health equity, maternal and child health, and community-centered research.</p>
-        <p>With a background in both <strong>qualitative and quantitative methods</strong>, I have contributed to research spanning ethnic health disparities in Sub-Saharan Africa, neonatal fatality prevention, and trainee preparedness for global health work in conflict settings. I am equally committed to translating research into action — whether through donor communications, stakeholder engagement, or community outreach.</p>
+        <p>With a background in both <strong>qualitative and quantitative methods</strong>, I have contributed to research spanning ethnic health disparities in Sub-Saharan Africa, neonatal fatality prevention, and trainee preparedness for global health work in conflict settings. I am equally committed to translating research into action, whether through donor communications, stakeholder engagement, or community outreach.</p>
         <p>I graduated <strong>Summa Cum Laude</strong> from Arizona State University with a B.A. in Global Health and a Minor in Biological Sciences, and bring B1-level French proficiency alongside experience studying abroad in Paris.</p>
       </div>
     </div>
@@ -673,7 +824,7 @@
         </div>
         <div class="research-content">
           <div class="research-role">Student Researcher</div>
-          <div class="research-org">Columbia University — Global Health Experience Survey (GHES)</div>
+          <div class="research-org">Columbia University, Global Health Experience Survey (GHES)</div>
           <div class="research-desc">The GHES examines trainee preparedness for global health work in conflict-affected settings, assessing cultural, socioeconomic, linguistic, and political readiness. Led a multi-institutional participant recruitment strategy, analyzed pre/post survey data, and contributed findings to a written abstract used to improve global health training curricula.</div>
         </div>
       </div>
@@ -722,7 +873,7 @@
         </div>
         <div class="exp-content">
           <div class="exp-role">Outreach & Communications Coordinator</div>
-          <div class="exp-org">FLIGHT — Foundation for the Localization and Innovation of Global Health Technologies</div>
+          <div class="exp-org">FLIGHT, Foundation for the Localization and Innovation of Global Health Technologies</div>
           <div class="exp-desc">FLIGHT is a maternal health systems-strengthening initiative focused on reducing maternal sepsis in Freetown, Sierra Leone. Leads communications and donor engagement efforts, translating program data into quarterly newsletters, reports, digital content, and stakeholder briefs while managing donor relations and resource mobilization materials using REDCap-based data systems.</div>
         </div>
       </div>
@@ -734,7 +885,7 @@
         </div>
         <div class="exp-content">
           <div class="exp-role">Program Assistant</div>
-          <div class="exp-org">American Academy of Pediatrics — Arizona Chapter (AZAAP)</div>
+          <div class="exp-org">American Academy of Pediatrics, Arizona Chapter (AZAAP)</div>
           <div class="exp-desc">Supported the Injury and Fatality Prevention and Poverty and Child Health programs. Reviewed and processed neonatal fatality cases in Maricopa County, synthesized data to classify deaths and identify patterns of preventability, and participated in weekly case review meetings with pediatricians and public health officials to assess and recommend prevention strategies.</div>
         </div>
       </div>
@@ -743,11 +894,102 @@
   </div>
 </section>
 
+
+<!-- WRITING -->
+<section id="writing">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Writing</h2>
+    </div>
+
+    <div class="writing-tabs">
+      <button class="writing-tab active" onclick="showPanel('panel1', this)">Commentary I</button>
+      <button class="writing-tab" onclick="showPanel('panel2', this)">Commentary II</button>
+      <button class="writing-tab" onclick="showPanel('panel3', this)">Ethics Abstract</button>
+    </div>
+
+    <!-- Commentary III / Provision -->
+    <div class="writing-panel active" id="panel1">
+      <div class="writing-piece">
+        <div class="writing-category">Academic Commentary</div>
+        <h3 class="writing-title">Procedural Fairness and the Limits of Just Resource Allocation</h3>
+        <div class="writing-context">Columbia University · Sociomedical Sciences · Commentary on Daniels &amp; Rawls</div>
+        <div class="writing-divider"></div>
+        <div class="writing-body">
+          <p>One of the key tensions raised in session 8 was the dilemma of allocating health resources fairly when resources are finite. Rawls argued that fair equality of opportunity as a core principle of justice should be emphasized. This belief influenced Daniels to argue that healthcare is a morally special good due to its protection of people's fair equality of opportunity. However, while Daniels argues that healthcare is morally special, he does not minimize the impacts that other conditions contribute meaningfully to opportunity as well, and to not provide access to all impacts on opportunity fails to address the root causes of public health crises, which a traditional framework of public health would state is based on systemic issues and structural barriers. This inevitably leads to his argument that fairness in outcomes depends on fairness in the decision-making process. He argues that scarcity, combined with reasonable disagreement about priorities impacting opportunity, necessitates a fair process for setting limits, and therefore, the allocation of resources must be done "fairly" and by institutions or decision-makers who will be held liable for their implications. However, can procedural fairness alone ensure just outcomes in the allocation of scarce healthcare resources?</p>
+          <p>While I agree that equal access to resources may lead to resource depletion and the need for allocation and rationing, Daniels' argument for procedural justice, in addition to general principles, uses subjective phrasing and defines fairness procedurally. The process includes four main conditions: publicity, relevance, revisions, and enforcement. While these traits of a decision-making process are arguably fair, the vague condition of relevance prompts concerns regarding who decides what is relevant. Decision-makers may prioritize cost-effectiveness as a "relevant" reason when allocating resources, favoring interventions that produce the greatest profit. However, this can deprioritize care for populations with more complex or costly needs, such as individuals with chronic conditions or those in marginalized communities. To argue that these four conditions will inevitably result in a fair decision is just a new way of operationalizing a subjective concept, resulting in false objectivity.</p>
+          <p>Additionally, Daniels does not rely on either community-based or utilitarian approaches and favors a system that is "morally just" in place of one that benefits the majority or is agreed upon by the community. He argues that legitimacy comes from how decisions are made, not who makes them, and that majorities can be morally wrong. This stems from the theory that majority rule within a democracy will influence individuals to act in ways opposing their core beliefs. While it is true that majorities can override minority health needs and that preferences can be shaped by societal shifts and inequities, shifting decision-making authority to institutional processes does not eliminate these biases but instead risks embedding them within the criteria used to define what counts as reasonable or relevant.</p>
+          <p>In analyzing Daniels and Rawls, it is interesting to consider that this framework was established as a method to solve issues like resource rationing and allocation. As Daniels' framework becomes more complex and intricate, I am prompted to consider if this model is somewhat similar to the model currently existing in the United States. His deliberate avoidance of specifying who should make decisions risks producing a fragmented system that lacks consistency across decision-making bodies. While these processes may produce decisions that are perceived as legitimate, legitimacy does not necessarily equate to justice. A system can satisfy procedural requirements while still producing outcomes that disproportionately disadvantage already marginalized populations.</p>
+        </div>
+        <div class="writing-refs">
+          <div class="writing-refs-label">Works Cited</div>
+          <ol>
+            <li>Daniels, N. (2007). <em>Just Health: Meeting Health Needs Fairly.</em> Cambridge University Press.</li>
+            <li>Rawls, J. (1971). <em>A Theory of Justice.</em> Harvard University Press.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- Commentary II / Prevention -->
+    <div class="writing-panel" id="panel2">
+      <div class="writing-piece">
+        <div class="writing-category">Academic Commentary</div>
+        <h3 class="writing-title">When Prevention Becomes Control</h3>
+        <div class="writing-context">Columbia University · Sociomedical Sciences · Commentary on State Obligation &amp; Public Health Ethics</div>
+        <div class="writing-divider"></div>
+        <div class="writing-body">
+          <p>In session 5, we discussed the topic of protection and prevention under the context of epidemics and the control of infectious disease. The goals of this session were to identify both the current obligations and what ought to be the obligations of the state when considering the intersection of autonomy, free will, and public safety. Silverman and Wiley (2017) discuss shame as a method of influencing or coercing a population to follow specific health guidelines. They highlight both the potential effectiveness of shame in reinforcing social norms and its ethical risks, including stigma directed toward specific demographics, often communities of color who are already disproportionately marginalized. The idea of introducing stigma as a public health tool raises concerns about unleashing an uncontrollable social force with unequal consequences.</p>
+          <p>An additional argument in this reading, as well as in Viens et al. (2009), is the balancing of personal freedoms and autonomy with preventative public safety measures. It is often stated in the field of public health that prevention is the best cure; however, I was prompted by Viens et al. (2009) to consider how much control the state should have in ensuring certain behaviors within a population are prohibited for the prevention of disease or health implications, and if the state should even have an obligation to do so. There is a right for the population to be adequately informed of possible health implications stemming from certain behaviors, but to police those behaviors begins to border paternalistic views.</p>
+          <p>Historically, when individuals perceive that their liberties are being restricted, there is often resistance, which can undermine the effectiveness of public health interventions. Additionally, prohibiting specific behaviors often will not eradicate them from a society, but will incentivize underground or clandestine versions of those behaviors, which are often far more dangerous, harder to regulate, and can present serious public health risks. These risks typically impact marginalized groups such as those living in poverty and communities of color disproportionately.</p>
+          <p>Although prevention is an effective means of reducing disease at the population level, framing it as the best or only solution risks shifting the state's focus entirely toward preventative measures at the expense of treatment. I argue that the state should only be obligated to inform the general public of the dangers surrounding certain behaviors and should go no further to enforce these behaviors unless the general population is unable to protect themselves from these dangers or if one's behavior infringes on the safeties of others.</p>
+          <p>An important aspect of prevention to be considered is the topic of surveillance. Promoting prevention inevitably leads to the promotion of surveillance, and if one demographic in a population is being surveilled, it is only ethical for everyone to be surveilled to the same extent. This can create issues, particularly in communities with preexisting histories of mistrust with the government. Lee et al. (2012) argues that this lack of individual consent in surveillance for prevention is justified as long as it is minimally invasive and produces useful information because it is essential for population health. While prevention is a good place to start when considering public health, it should not be regarded as the only solution to public safety, and should be considered alongside other methods, such as respect for autonomy, equitable implementation, and access to treatment.</p>
+        </div>
+        <div class="writing-refs">
+          <div class="writing-refs-label">References</div>
+          <ol>
+            <li>Lee, L. M., Heilig, C. M., &amp; White, A. (2012). Ethical justification for conducting public health surveillance without patient consent. <em>American Journal of Public Health, 102</em>(1), 38–44.</li>
+            <li>Silverman, R. D., &amp; Wiley, L. F. (2017). Shaming vaccine refusal. <em>Journal of Law, Medicine &amp; Ethics, 45</em>(4), 569–581.</li>
+            <li>Viens, A. M., Bensimon, C. M., Kavanagh, A. M., &amp; Upshur, R. E. G. (2009). Your liberty or your life: Reciprocity in the use of restrictive measures in contexts of contagion. <em>Bioethical Inquiry, 6</em>(2), 207–217.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ethics Abstract -->
+    <div class="writing-panel" id="panel3">
+      <div class="writing-piece">
+        <div class="writing-category">Academic Abstract</div>
+        <h3 class="writing-title">Precision Public Health, Surveillance, and Equity in a Post-Dobbs Era</h3>
+        <div class="writing-context">Columbia University · Ethics in Public Health · Final Abstract</div>
+        <div class="writing-divider"></div>
+        <div class="writing-body">
+          <p>A societal shift towards a more personalized and individual approach to healthcare has prompted the rise in what is now being referred to as "precision public health." This reframing of existing public health frameworks accounts for individual variability when establishing prevention, intervention, and treatment strategies. While this newfound approach to public health offers the opportunity to provide more personal health insights which may subsequently benefit entire populations, questions remain regarding its implications for data surveillance and safety.</p>
+          <p>Healthcare that is focused on identifying risk at the individual level requires detailed and continuous data collection, which could include health records, behavioral information, or GPS data. Additionally, as technologies continue to advance quickly, the capacity for large-scale data collection and analysis has grown faster than the ethical and regulatory systems designed to govern their use. Some could argue that this increased surveillance is an infringement of autonomy and carries paternalistic undertones, which is particularly concerning in a post-Dobbs climate in which there are heightened fears surrounding the usage of health data.</p>
+          <p>Additionally, there are questions surrounding how marginalized communities with a historic mistrust in government surveillance may be disproportionately burdened by participation in this new framework, in which the benefits may remain inaccessible to them due to structural barriers. The expansion of precision public health depends on intensified surveillance infrastructures that challenge traditional ethical commitments to privacy, autonomy, and non-maleficence. These challenges highlight the need for stronger ethical safeguards in data-driven public health systems, especially with growing technological advancements.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function showPanel(panelId, tabEl) {
+    document.querySelectorAll('.writing-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.writing-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(panelId).classList.add('active');
+    tabEl.classList.add('active');
+  }
+</script>
+
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
     <div class="section-header">
-      <span class="section-num">04</span>
+      <span class="section-num">05</span>
       <h2 class="section-title">Contact</h2>
     </div>
     <div class="contact-grid">
@@ -759,12 +1001,8 @@
             <span class="contact-value">New York City, New York</span>
           </div>
           <div class="contact-row">
-            <span class="contact-label">Phone</span>
-            <span class="contact-value">(480) 454-9885</span>
-          </div>
-          <div class="contact-row">
             <span class="contact-label">Program</span>
-            <span class="contact-value">MPH · Columbia University · 2026</span>
+            <span class="contact-value">MPH · Columbia University · Graduating May 2026</span>
           </div>
         </div>
       </div>
@@ -796,7 +1034,7 @@
 <!-- FOOTER -->
 <footer>
   <span class="footer-name">Ariana Jackson · MPH Candidate</span>
-  <span class="footer-note">Columbia University · Sociomedical Sciences · 2026</span>
+  <span class="footer-note">Columbia University · Sociomedical Sciences · Graduating May 2026</span>
 </footer>
 
 </body>
